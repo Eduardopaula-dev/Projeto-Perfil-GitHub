@@ -1,11 +1,21 @@
 const inputSearch = document.getElementById('input-search');
 const btnSearch = document.getElementById('btn-search');
 
+const baseURL = 'https://api.github.com/user'
+
 btnSearch.addEventListener("click", () => {
-    const searchTerm = inputSearch.value;
-    if(searchTerm) {
-        console.log('O valor digitado é:', searchTerm);
+    const userName = inputSearch.value;
+    if(userName) {
+        const response = `${baseURL}/${userName}`
+
+        if(!response) {
+            alert('Usuário não encontrado. Por favor, verifique o nome de usuário e tente novamente');
+            return;
+        }
+
+        const data = response.json();
+        console.log(data);
     } else {
-        alert('Digite o nome do usuáirio')
+        alert('Digite o nome do usuário')
     }
 });
