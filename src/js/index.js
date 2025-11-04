@@ -21,14 +21,13 @@ btnSearch.addEventListener("click", async () => {
             const userData = await response.json();
 
             profileResults.innerHTML = `
-            <div class="profile-results">
-                <img src="${userData.avatar_url}" alt="Avatar de ${userData.name}"
+            <div class="profile-card">
+                <img src="${userData.avatar_url}" alt="Avatar de ${userData.name}" class="profile-avatar">
                 <div class="profile-info">
                     <h2>${userData.name}</h2>
                     <p>${userData.bio || 'Não possui bio cadastrada 😅'}
                 </div>
-            </div
-            `
+            </div`;
         } catch (error) {
             console.error('Erro ao buscar o perfil de usuário:', error);
             alert('Ocorreu um erro ao buscar o perfil do usuário. Por favor, tente mais tarde.')
