@@ -1,5 +1,6 @@
 const inputSearch = document.getElementById('input-search');
 const btnSearch = document.getElementById('btn-search');
+const profileResults = document.querySelector('.profile-results')
 
 const baseURL = 'https://api.github.com/users'
 
@@ -16,8 +17,17 @@ btnSearch.addEventListener("click", async () => {
                 return;
             }
 
-            const data = await response.json();
-            console.log(data);
+            const userData = await response.json();
+
+            profileResults.innerHTML = `
+            <div class="profile-results">
+                <img src="${userData.avatar_url}" alt="Avatar de ${userData.name}"
+                <div class="profile-info">
+                    <h2>${userData.name}</h2>
+                    <p>${userData.bio || 'Não possui bio cadastrada 😅'}
+                </div>
+            </div
+            `
         } catch (error) {
             console.error('Erro ao buscar o perfil de usuário:', error);
             alert('Ocorreu um erro ao buscar o perfil do usuário. Por favor, tente mais tarde.')
