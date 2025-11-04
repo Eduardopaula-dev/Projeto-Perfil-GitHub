@@ -8,6 +8,7 @@ btnSearch.addEventListener("click", async () => {
     const userName = inputSearch.value;
 
     if (userName) {
+        profileResults.innerHTML = `<p class="loading">Carregando...</p>`
 
         try {
             const response = await fetch(`${baseURL}/${userName}`)
@@ -31,6 +32,7 @@ btnSearch.addEventListener("click", async () => {
         } catch (error) {
             console.error('Erro ao buscar o perfil de usuário:', error);
             alert('Ocorreu um erro ao buscar o perfil do usuário. Por favor, tente mais tarde.')
+            profileResults.innerHTML = ""
 
         }
     } else {
