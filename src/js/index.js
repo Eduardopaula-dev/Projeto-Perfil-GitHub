@@ -1,5 +1,5 @@
 import { fetchGithubUser, fetchGithubUserRepos } from './githubApi.js';
-import { renderProfile } from './profileview.js';
+import { renderProfile} from './profileView.js';
 
 const inputSearch = document.getElementById('input-search');
 const btnSearch = document.getElementById('btn-search');
